@@ -1,6 +1,6 @@
 {
   "name": "@mikeal/csv-merge",
-  "version": "1.0.0",
+  "version": "0.0.0-dev",
   "description": "Merge two CSVs together",
   "main": "index.js",
   "scripts": {
