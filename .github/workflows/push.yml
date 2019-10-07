@@ -7,15 +7,9 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Build
-      uses: actions/npm@master
-      with:
-        entrypoint: npm
-        args: install
+      run: npm build
     - name: Test
-      uses: actions/npm@master
-      with:
-        entrypoint: npm
-        args: test
+      run: npm test
     - name: Publish Filter
       uses: actions/bin/filter@master
       with:
