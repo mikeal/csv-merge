@@ -11,7 +11,8 @@
   "license": "(Apache-2.0 AND MIT)",
   "dependencies": {
     "csv-parse": "^4.6.3",
-    "mkcsv": "^1.0.1"
+    "mkcsv": "^1.0.1",
+    "yargs": "^14.2.0"
   },
   "devDependencies": {
     "aegir": "^20.3.1",
