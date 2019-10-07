@@ -1,19 +1,21 @@
 {
   "name": "@mikeal/csv-merge",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Merge two CSVs together",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "hundreds aegir test -t node browser"
   },
   "keywords": [],
   "author": "Mikeal Rogers <mikeal.rogers@gmail.com> (https://www.mikealrogers.com/)",
   "license": "(Apache-2.0 AND MIT)",
   "dependencies": {
-    "csv-parse": "^4.6.3"
+    "csv-parse": "^4.6.3",
+    "mkcsv": "^1.0.1"
   },
   "devDependencies": {
-    "standard": "^14.3.1"
+    "aegir": "^20.3.1",
+    "hundreds": "0.0.2"
   },
   "repository": {
     "type": "git",

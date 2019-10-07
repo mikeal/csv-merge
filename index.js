@@ -1,4 +1,6 @@
+'use strict'
 const parse = require('csv-parse/lib/sync')
+const mkcsv = require('mkcsv')
 const assert = require('assert')
 
 const parser = input => {
@@ -41,11 +43,7 @@ const merge = (csv1, csv2, columnName1, columnName2, empty = 0) => {
   for (const [_key, value] of db1.entries()) {
     output.push(mk(_key, value, empty))
   }
-  console.log(output)
+  return mkcsv(output)
 }
 
-const fs = require('fs')
-const read = fs.readFileSync
-const f1 = '../npm-regressions/2019-02---2019-02/depOwnersPerMonth.csv'
-const f2 = '../npm-regressions/2019-02---2019-02/ownerReleasesByMonth.csv'
-merge(read(f1), read(f2), 'dependedOn', 'releases')
+module.exports = merge
