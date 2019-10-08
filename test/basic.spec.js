@@ -23,5 +23,10 @@ first,second,3,4
 next,second,0,4
 first,next,3,0
 `)
+  
+  const missing = main(csv1, csv2, 'three', 'four', { skipMissing: true })
+  same(missing, `ONE,TWO,THREE,FOUR
+first,second,3,4
+`)
   done()
 })

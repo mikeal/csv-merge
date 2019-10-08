@@ -11,7 +11,10 @@ const parser = input => {
   return records
 }
 
-const merge = (csv1, csv2, columnName1, columnName2, empty = 0) => {
+const defaults = { empty: 0, skipMissing: false }
+
+const merge = (csv1, csv2, columnName1, columnName2, options={}) => {
+  options = Object.assign(defaults, options)
   const rows1 = parser(csv1.toString())
   const rows2 = parser(csv2.toString())
   const keys1 = Object.keys(rows1[0])
@@ -36,12 +39,17 @@ const merge = (csv1, csv2, columnName1, columnName2, empty = 0) => {
   for (const row of rows2) {
     const _key = JSON.stringify(key.map(k => row[k]))
     let value = db1.get(_key)
-    if (!value) value = empty
+    if (!value) {
+      if (options.skipMissing) continue
+      value = options.empty
+    }
     db1.delete(_key)
     output.push(mk(_key, value, row[valueKey]))
   }
-  for (const [_key, value] of db1.entries()) {
-    output.push(mk(_key, value, empty))
+  if (!options.skipMissing) {
+    for (const [_key, value] of db1.entries()) {
+      output.push(mk(_key, value, options.empty))
+    }
   }
   return mkcsv(output)
 }
