@@ -10,12 +10,9 @@ jobs:
       run: npm build
     - name: Test
       run: npm test
-    - name: Publish Filter
-      uses: actions/bin/filter@master
-      with:
-        args: branch master
     - name: Publish
       uses: mikeal/merge-release@master
+      if: github.ref == 'refs/heads/master' && github.repository == 'mikeal/bent'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
